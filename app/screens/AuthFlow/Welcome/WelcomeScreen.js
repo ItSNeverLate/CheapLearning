@@ -2,11 +2,9 @@ import React, { useContext, useState } from 'react';
 import { View } from 'react-native';
 import { Button, Text, withTheme } from 'react-native-elements';
 import { LanguageContext } from '../../../context/language';
-import Routes from '../../../navigation/routes';
+import Routes from '../../../router/routes';
 import styles from './styles';
-import fontConfigEN from '../../../style/fontConfigs/en.js';
-import fontConfigFA from '../../../style/fontConfigs/fa.js';
-import theme from '../../../style/RNElementsTheme'
+import fontConfigs from '../../../style/fontConfigs';
 
 
 function WelcomeScreen({ navigation, replaceTheme }) {

@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
-import colors from '../config/colors';
 import LoginScreen from '../screens/AuthFlow/Login/LoginScreen';
 import RegisterScreen from '../screens/AuthFlow/Register/RegisterScreen';
 import Routs from './routes';

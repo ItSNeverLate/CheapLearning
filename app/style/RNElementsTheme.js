@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import defaultColors from './colors/default';
-import defaultFontConfig from './fontConfigs/en';
+import defaultFontConfig from './fontConfigs';
 
 // Percent
 const fontSizeNormal = 3;

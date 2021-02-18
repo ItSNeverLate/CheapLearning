@@ -2,10 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { useContext, useEffect } from 'react';
 import { withTheme } from 'react-native-elements';
 import { LanguageContext } from '../context/language.js';
-import DefaultTheme from '../style/NavigationTheme';
+import DefaultTheme from '../style/navigationTheme';
 import logger from '../utility/logger.js';
 import storage from '../utility/storage.js';
 import MainNavigator from './MainNavigator';
+import * as SplashScreen from 'expo-splash-screen';
+
 
 function Navigator({ replaceTheme }) {
 
@@ -20,7 +22,9 @@ function Navigator({ replaceTheme }) {
         }
     }
 
-    useEffect(() => { setConfigurations() }, []);
+    useEffect(() => { 
+        setConfigurations()
+     }, []);
 
     return (
         <NavigationContainer theme={DefaultTheme}>

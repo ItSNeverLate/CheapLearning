@@ -1,19 +1,48 @@
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
-import { customFonts } from './app/assets';
+import { customFonts } from './app/assets/fonts';
 import { LanguageProvider } from './app/context/language';
-import Navigator from './app/navigation/Navigator';
+import Navigator from './app/router/Navigator';
 import Logger from './app/utility/logger';
-import theme from './app/style/RNElementsTheme';
+import theme from './app/style/rnElementsTheme';
+import * as SplashScreen from 'expo-splash-screen';
+import logger from './app/utility/logger';
 
 // For logging
 Logger.start()
 
 export default function App() {
   let [fontsLoaded] = useFonts(customFonts);
+  const [appIsReady, setAppReady] = useState(false);
+
+  const performAPICalls = async () => { }
+  const downloadAssets = async () => { }
+
+  const prepareResources = async () => {
+    try {
+      await performAPICalls();
+      await downloadAssets();
+    } catch (error) {
+      logger.log(error);
+    } finally {
+      setTimeout(() => {
+        setAppReady(true);
+        SplashScreen.hideAsync();
+      }, 3000);
+    };
+  }
+
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    prepareResources();
+  }, []);
+
+  if (!appIsReady) {
+    return null;
+  }
 
   if (!fontsLoaded) {
     return <AppLoading />;

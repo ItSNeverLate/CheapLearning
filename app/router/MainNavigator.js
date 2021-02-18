@@ -7,7 +7,6 @@ import ScheduleScreen from '../screens/MainFlow/Schedule/ScheduleScreen';
 import SearchScreen from '../screens/MainFlow/Search/SearchScreen';
 import SettingScreen from '../screens/MainFlow/Setting/SettingScreen';
 import AuthNavigator from './AuthNavigator';
-import MiddleButton from './MiddleButton';
 import Routes from './routes';
 
 
