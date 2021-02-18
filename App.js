@@ -1,14 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
+import { ThemeProvider } from 'react-native-elements';
+import { customFonts } from './app/assets';
+import { LanguageProvider } from './app/context/language';
+import Navigator from './app/navigation/Navigator';
+import Logger from './app/utility/logger';
+import theme from './app/style/RNElementsTheme';
+
+// For logging
+Logger.start()
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  let [fontsLoaded] = useFonts(customFonts);
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <ThemeProvider theme={theme()} >
+        <LanguageProvider >
+          <Navigator />
+          <StatusBar style="auto" />
+        </LanguageProvider>
+      </ThemeProvider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
